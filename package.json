@@ -1,0 +1,27 @@
+{
+  "name": "zslang",
+  "version": "1.0.0",
+  "description": "Yet another Zenscript compiler(parser?stimulator?) written in Typescript.(WIP)",
+  "main": "./lib/zslang.js",
+  "scripts": {
+    "test": "tsc && node ./lib/zslang.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yesterday17/ZSlang.git"
+  },
+  "keywords": [
+    "compiler"
+  ],
+  "author": "Yesterday17",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yesterday17/ZSlang/issues"
+  },
+  "homepage": "https://github.com/Yesterday17/ZSlang#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
+  }
+}
