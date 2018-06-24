@@ -4,7 +4,8 @@
   "description": "Yet another Zenscript compiler(parser?stimulator?) written in Typescript.(WIP)",
   "main": "./lib/zslang.js",
   "scripts": {
-    "test": "tsc && node ./lib/zslang.js"
+    "test": "ts-node ./src/zslang.ts",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,10 @@
     "url": "https://github.com/Yesterday17/ZSlang/issues"
   },
   "homepage": "https://github.com/Yesterday17/ZSlang#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@types/node": "^10.3.5",
+    "ts-node": "^7.0.0"
+  },
   "devDependencies": {
     "tslint": "^5.10.0",
     "typescript": "^2.9.2"
