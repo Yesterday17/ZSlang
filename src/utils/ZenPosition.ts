@@ -19,6 +19,6 @@ export class ZenPosition {
   }
 
   public toString(): string {
-    return `:${this.line}`;
+    return `${this.file.filename}:${this.line}`;
   }
 }

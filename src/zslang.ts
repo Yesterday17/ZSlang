@@ -25,7 +25,9 @@
  * The project is even with bd8a3c31ac29e7a387e6bf01f0dbf36d58ed55d8
  */
 
+import { ZenLexer } from "./lexer/ZenLexer";
 import { zfs as fs } from "./utils/FileSystem";
+import { logger } from "./utils/Logger";
 
 (function main() {
   if (process.argv.length < 3) {
@@ -48,10 +50,16 @@ import { zfs as fs } from "./utils/FileSystem";
     // console.log(content);
   } else if (type === "DIRECTORY") {
     // TODO: Check syntax error in a directory.
-    // console.log(fs.readdirSync(dir, { encoding: "utf-8" }));
+    logger.log("Loading scripts");
+
     const files: string[] = fs.look(dir);
-    console.log(files);
-    //
+
+    for (const i in files) {
+      if (files.hasOwnProperty(i)) {
+        logger.log(`Loading: ${files[i]}`);
+        ZenLexer.parse(files[i]);
+      }
+    }
   } else {
     // TODO: Add error message here.
     // This shouldn't happen.

@@ -4,7 +4,7 @@ import * as path from "path";
 function traversal(baseDir: string, addr: string[]) {
   const dir = fs.readdirSync(baseDir);
   for (const i in dir) {
-    if (dir[i] !== undefined) {
+    if (dir.hasOwnProperty(i)) {
       const p = path.resolve(baseDir, dir[i]);
       const stat = fs.statSync(p);
 
