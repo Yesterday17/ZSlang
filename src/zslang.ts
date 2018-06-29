@@ -21,33 +21,39 @@
  * SOFTWARE.
  */
 
- /**
-  * The project is even with bd8a3c31ac29e7a387e6bf01f0dbf36d58ed55d8
-  */
+/**
+ * The project is even with bd8a3c31ac29e7a387e6bf01f0dbf36d58ed55d8
+ */
 
-import * as fs from "fs";
-import * as path from "path";
+import { zfs as fs } from "./utils/FileSystem";
 
 (function main() {
   if (process.argv.length < 3) {
     // TODO: Add description here.
     return;
   }
-  const dir = path.normalize(process.argv[2]);
 
-  if (!fs.existsSync(dir)) {
+  const dir = fs.normalize(process.argv[2]);
+
+  if (!fs.exists(dir)) {
     // TODO: Add error message here.
     return;
   }
 
-  const type = fs.statSync(dir);
+  const type = fs.stats(dir);
 
-  if (type.isFile()) {
-    const content = fs.readFileSync(dir, { encoding: "utf8" });
-    console.log(content);
-  } else if (type.isDirectory()) {
+  if (type === "FILE") {
+    // TODO: Parse the file here.
+    // const content = fs.readFileSync(dir, { encoding: "utf8" });
+    // console.log(content);
+  } else if (type === "DIRECTORY") {
     // TODO: Check syntax error in a directory.
+    // console.log(fs.readdirSync(dir, { encoding: "utf-8" }));
+    const files: string[] = fs.look(dir);
+    console.log(files);
+    //
   } else {
     // TODO: Add error message here.
+    // This shouldn't happen.
   }
 })();
