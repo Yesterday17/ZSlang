@@ -28,6 +28,7 @@
 import { ZenLexer } from "./lexer/ZenLexer";
 import { zfs as fs } from "./utils/FileSystem";
 import { logger } from "./utils/Logger";
+import { parse } from "./parser/Parser";
 
 (function main() {
   if (process.argv.length < 3) {
@@ -35,33 +36,5 @@ import { logger } from "./utils/Logger";
     return;
   }
 
-  const dir = fs.normalize(process.argv[2]);
-
-  if (!fs.exists(dir)) {
-    // TODO: Add error message here.
-    return;
-  }
-
-  const type = fs.stats(dir);
-
-  if (type === "FILE") {
-    // TODO: Parse the file here.
-    // const content = fs.readFileSync(dir, { encoding: "utf8" });
-    // console.log(content);
-  } else if (type === "DIRECTORY") {
-    // TODO: Check syntax error in a directory.
-    logger.log("Loading scripts");
-
-    const files: string[] = fs.look(dir);
-
-    for (const i in files) {
-      if (files.hasOwnProperty(i)) {
-        logger.log(`Loading: ${files[i]}`);
-        ZenLexer.parse(files[i]);
-      }
-    }
-  } else {
-    // TODO: Add error message here.
-    // This shouldn't happen.
-  }
+  parse(process.argv[2]);
 })();

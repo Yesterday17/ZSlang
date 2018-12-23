@@ -1,18 +1,16 @@
 import * as fs from "fs";
 import * as path from "path";
 
-function traversal(baseDir: string, addr: string[]) {
+function traversal(baseDir: string, addr: string[]): void {
   const dir = fs.readdirSync(baseDir);
-  for (const i in dir) {
-    if (dir.hasOwnProperty(i)) {
-      const p = path.resolve(baseDir, dir[i]);
-      const stat = fs.statSync(p);
+  for (const content of dir) {
+    const p = path.resolve(baseDir, content);
+    const stat = fs.statSync(p);
 
-      if (stat.isFile()) {
-        addr.push(p);
-      } else if (stat.isDirectory()) {
-        traversal(p, addr);
-      }
+    if (stat.isFile() && p.substr(p.length - 3) === ".zs") {
+      addr.push(p);
+    } else if (stat.isDirectory()) {
+      traversal(p, addr);
     }
   }
 }
@@ -29,7 +27,6 @@ const zfs = {
     } else if (type.isDirectory()) {
       return "DIRECTORY";
     } else {
-      // This shouldn't happen for usual.
       return "UNKNOWN";
     }
   },

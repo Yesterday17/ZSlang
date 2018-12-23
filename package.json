@@ -4,7 +4,7 @@
   "description": "Yet another Zenscript compiler(parser?stimulator?) written in Typescript.(WIP)",
   "main": "./lib/zslang.js",
   "scripts": {
-    "test": "ts-node ./src/zslang.ts ./scripts/",
+    "test": "ts-node ./src/zslang.ts ./scripts",
     "build": "tsc"
   },
   "repository": {

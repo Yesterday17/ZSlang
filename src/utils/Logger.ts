@@ -1,7 +1,18 @@
 import * as fs from "fs";
 
-export let logger = {
+export const logger = {
+  /**
+   * Only show log message when debuging.
+   */
   log: (message: string) => {
-    console.log(message);
+    if (process.env.DEBUG) {
+      console.log(message);
+    }
+  },
+  /**
+   * Error message always shows.
+   */
+  error: (message: string) => {
+    console.error(message);
   }
 };
