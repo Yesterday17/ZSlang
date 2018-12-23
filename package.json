@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/Yesterday17/ZSlang#readme",
   "dependencies": {
-    "@types/node": "^10.3.5",
-    "ts-node": "^7.0.0"
+    "ts-node": "^7.0.1"
   },
   "devDependencies": {
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2"
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2",
+    "@types/node": "^10.12.18"
   }
 }
